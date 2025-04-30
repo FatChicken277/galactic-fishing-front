@@ -56,7 +56,7 @@ export default defineConfig({
           },
         ],
       },
-      includeAssets: ["icons/*", "logo3.png"],
+      includeAssets: ["icons/*", "logo.webp"],
       workbox: {
         runtimeCaching: [
           {

@@ -81,7 +81,7 @@ function LoginForm() {
   return (
     <Fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-6 space-y-2 bg-gradient-to-br to-primary/[20.37%]">
       <div className="flex flex-col items-center space-y-2">
-        <img src="/logo3.png" alt="Logo" width={200} />
+        <img src="/logo.webp" alt="Logo" width={200} />
         <h1 className="text-lg font-semibold"></h1>
       </div>
 
