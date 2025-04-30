@@ -1,13 +1,24 @@
 import { defineConfig } from "vite";
+
+import path from "path";
 import preact from "@preact/preset-vite";
 
 import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"), // Resolves '@' to the 'src' folder
+    },
+  },
+  css: {
+    postcss: "./postcss.config.js",
+  },
   plugins: [
     preact(),
     VitePWA({
+      strategies: "generateSW",
       registerType: "autoUpdate",
       devOptions: {
         enabled: true,
@@ -42,6 +53,25 @@ export default defineConfig({
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
+          },
+        ],
+      },
+      includeAssets: ["icons/*", "logo3.png"],
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/api-game\.bloque\.app\/.*$/,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "api-cache",
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24, // 1 day
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
           },
         ],
       },

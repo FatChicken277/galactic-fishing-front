@@ -1,3 +1,201 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+
+@font-face {
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "gf-dark";
+  color-scheme: "dark";
+  --color-base-100: oklch(0.15 0.032 267.2);
+  --color-base-200: oklch(0.2 0.032 267.2);
+  --color-base-300: oklch(0.3 0.032 267.2);
+  --color-base-content: oklch(95% 0.01 270);
+  --color-primary: oklch(0.891 0.195 192.3);
+  --color-primary-content: oklch(10% 0.04 220);
+  --color-secondary: oklch(0.82 0.233 328.2);
+  --color-secondary-content: oklch(10% 0.1 290);
+  --color-accent: oklch(0.796 0.223 142.6);
+  --color-accent-content: oklch(22% 0.08 160);
+  --color-neutral: oklch(0.4 0.032 267.2);
+  --color-neutral-content: oklch(98% 0 0);
+  --color-info: oklch(67% 0.182 276.935);
+  --color-info-content: oklch(100% 0.056 229.695);
+  --color-success: oklch(82% 0.25 145);
+  --color-success-content: oklch(10% 0.072 132.109);
+  --color-warning: oklch(90% 0.182 98.111);
+  --color-warning-content: oklch(10% 0.08 70);
+  --color-error: oklch(63% 0.237 25.331);
+  --color-error-content: oklch(100% 0.092 26.042);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 1;
+}
+
+@plugin "daisyui/theme" {
+  name: "gf-light";
+  color-scheme: "light";
+
+  /* BACKGROUND + TEXT */
+  --color-base-100: oklch(98% 0.015 270);
+  --color-base-200: oklch(94% 0.015 270);
+  --color-base-300: oklch(89% 0.015 270);
+  --color-base-content: oklch(20% 0.02 270); /* dark text, high contrast */
+
+  /* PRIMARY (blue) */
+  --color-primary: oklch(60% 0.2 200); /* medium blue */
+  --color-primary-content: oklch(
+    98% 0.01 270
+  ); /* light text, enough contrast */
+
+  /* SECONDARY (magenta) */
+  --color-secondary: oklch(58% 0.25 320);
+  --color-secondary-content: oklch(98% 0.01 270);
+
+  /* ACCENT (green) */
+  --color-accent: oklch(55% 0.24 140);
+  --color-accent-content: oklch(98% 0.01 270);
+
+  /* NEUTRAL */
+  --color-neutral: oklch(45% 0.015 270);
+  --color-neutral-content: oklch(98% 0.01 270);
+
+  /* FEEDBACK COLORS */
+  --color-info: oklch(60% 0.12 260);
+  --color-info-content: oklch(98% 0.01 270);
+
+  --color-success: oklch(62% 0.18 145);
+  --color-success-content: oklch(98% 0.01 270);
+
+  --color-warning: oklch(78% 0.12 90);
+  --color-warning-content: oklch(20% 0.01 270); /* dark text for yellow bg */
+
+  --color-error: oklch(50% 0.2 30);
+  --color-error-content: oklch(98% 0.01 270);
+
+  /* Radius & Visuals */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 1;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: "Exo 2", sans-serif;
+}
+
+.scanner {
+  position: absolute;
+  left: 0;
+  top: -100px; /* Start the light off-screen at the top */
+  width: 100%;
+  height: 10px; /* Height of the scanning light */
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 255, 0.8) 10%,
+    rgba(0, 255, 255, 0.2) 60%,
+    transparent 100%
+  );
+  animation: scan 3s infinite linear, filterEffect 2s infinite ease-in-out,
+    lines 0.5s infinite linear;
+}
+
+/* Animation for the scanner light movement (Top to Bottom) */
+@keyframes scan {
+  0% {
+    top: -0px; /* Start off-screen at the top */
+    opacity: 0;
+  }
+  50% {
+    opacity: 6;
+  }
+  100% {
+    top: 100%; /* Move down to the bottom */
+    opacity: 0;
+  }
+}
+
+/* Animation for the filter effect (e.g., blur or brightness) */
+@keyframes filterEffect {
+  0% {
+    filter: blur(0) brightness(1);
+  }
+  50% {
+    filter: blur(5px) brightness(1.5); /* Apply blur and brightness change */
+  }
+  100% {
+    filter: blur(0) brightness(1);
+  }
+}
+
+/* Add lines effect */
+@keyframes lines {
+  0% {
+    background: radial-gradient(
+      circle,
+      rgba(0, 255, 255, 0.8) 10%,
+      rgba(0, 255, 255, 0.2) 60%,
+      transparent 100%
+    );
+  }
+  100% {
+    background: radial-gradient(
+      circle,
+      rgba(0, 255, 255, 0.8) 10%,
+      rgba(0, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+  }
+}
+
+@keyframes vhs-effect {
+  10%,
+  90% {
+    transform: translate(-0.1px, -0.1px); /* Reduced translate */
+    opacity: 100%;
+  }
+
+  20%,
+  80% {
+    transform: translate(0.1px, 0.2px); /* Reduced translate */
+    opacity: 98%;
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate(-0.1px, -0.2px); /* Reduced translate */
+    opacity: 97%;
+  }
+
+  40%,
+  60% {
+    transform: translate(0.1px, 0.1px); /* Reduced translate */
+    opacity: 99%;
+  }
+}
+
+.vhs {
+  filter: blur(0.2px);
+  animation: vhs-effect 1s infinite;
+}
