@@ -10,7 +10,7 @@ interface HeaderProps {
   className?: string;
 }
 
-function Header({ className }: HeaderProps) {
+export function Header({ className }: HeaderProps) {
   const { isLogged = false } = useContext(UserContext) || {};
 
   return (
@@ -39,5 +39,3 @@ function Header({ className }: HeaderProps) {
     </header>
   );
 }
-
-export default Header;

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import Dock from "@/components/layout/Dock";
+import { Dock } from "@/components/layout/Dock";
 
-import Profile from "@/components/Profile";
-import Timer from "@/components/Timer";
+import { Profile } from "@/components/profile/Profile";
+import { Timer } from "@/components/timer/Timer";
 import { Leaderboard } from "@/components/leaderboard/Leaderboard";
-import Market from "@/components/Market";
+import { Market } from "@/components/market/Market";
 
-function Dashboard() {
+export function Dashboard() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
@@ -70,5 +70,3 @@ function Dashboard() {
     </div>
   );
 }
-
-export default Dashboard;

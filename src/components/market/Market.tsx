@@ -14,7 +14,7 @@ import {
 import type { MarketItem } from "@/types/market";
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/solid";
 
-function Market() {
+export function Market() {
   const { market, isLoading, error } = useGetMarket();
   const [page, setPage] = useState(1);
 
@@ -128,5 +128,3 @@ function Market() {
     </Card>
   );
 }
-
-export default Market;

@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "@/context/UserContext";
 
-import Header from "@/components/layout/Header";
+import { Header } from "@/components/layout/Header";
 
 import { LoginView } from "@/components/login/LoginView";
-import Dashboard from "@/components/layout/Dashboard";
+import { Dashboard } from "@/components/layout/Dashboard";
 
-import ScannerLines from "@/components/ScannerLines";
+import { ScannerLines } from "@/components/ScannerLines";
 
 import { NotificationCenter } from "@/components/common/NotificationCenter";
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardTitle } from "@/components/common/Card";
 import { Button } from "@headlessui/react";
 
-function Timer() {
+export function Timer() {
   const [currentTime, setCurrentTime] = useState(30);
   const [baseTime, setBaseTime] = useState(30);
   const [timeInterval, setTimeInterval] = useState<NodeJS.Timeout | null>(null);
@@ -97,5 +97,3 @@ function Timer() {
     </Card>
   );
 }
-
-export default Timer;

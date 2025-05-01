@@ -1,4 +1,4 @@
-function ScannerLines() {
+export function ScannerLines() {
   return (
     <>
       <div className="scanner -z-100" />
@@ -6,5 +6,3 @@ function ScannerLines() {
     </>
   );
 }
-
-export default ScannerLines;

@@ -12,7 +12,7 @@ import {
   CurrencyDollarIcon,
 } from "@heroicons/react/24/outline";
 
-function Profile() {
+export function Profile() {
   const { player, username, isGuest } = useContext(UserContext) || {};
 
   const userType = isGuest ? "Guest" : "Agent Rebel";
@@ -110,5 +110,3 @@ function Profile() {
     </Card>
   );
 }
-
-export default Profile;

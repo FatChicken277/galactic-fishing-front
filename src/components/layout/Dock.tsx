@@ -17,7 +17,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dock({ className, setSelectedTab }: DockProps) {
+export function Dock({ className, setSelectedTab }: DockProps) {
   return (
     <TabGroup
       className={clsx(
