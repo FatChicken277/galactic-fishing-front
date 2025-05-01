@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Button } from "@headlessui/react";
 import { Card, CardContent, CardTitle } from "@/components/common/Card";
-import PlayerTable from "@/components/PlayerTable";
+import { PlayerTable } from "@/components/leaderboard/PlayerTable";
 
 import {
   ChevronDoubleLeftIcon,
@@ -13,7 +13,7 @@ import {
 
 import { useGetLeaderboard } from "@/hooks/useGetLeaderboard";
 
-function Leaderboard() {
+export function Leaderboard() {
   const { players, isLoading, error } = useGetLeaderboard();
   const [page, setPage] = useState(1);
   const itemsPerPage = 30;
@@ -64,5 +64,3 @@ function Leaderboard() {
     </Card>
   );
 }
-
-export default Leaderboard;

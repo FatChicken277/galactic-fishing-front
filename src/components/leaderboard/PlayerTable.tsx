@@ -10,7 +10,7 @@ interface PlayerTableProps {
   page: number;
 }
 
-function PlayerTable({ players, page }: PlayerTableProps) {
+export function PlayerTable({ players, page }: PlayerTableProps) {
   const { player: currentUser } = useContext(UserContext) || {};
 
   const itemsPerPage = 30;
@@ -85,5 +85,3 @@ function PlayerTable({ players, page }: PlayerTableProps) {
     </>
   );
 }
-
-export default PlayerTable;

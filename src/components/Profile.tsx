@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "@/context/UserContext";
 
 import { Card, CardContent, CardTitle } from "@/components/common/Card";
-import LogOut from "@/components/LogOut";
+import { LogoutButton } from "@/components/common/LogoutButton";
 
 import { UserIcon } from "@heroicons/react/24/outline";
 import {
@@ -40,7 +40,7 @@ function Profile() {
             </div>
           </div>
 
-          <LogOut />
+          <LogoutButton />
         </CardTitle>
 
         {!isGuest && player && (

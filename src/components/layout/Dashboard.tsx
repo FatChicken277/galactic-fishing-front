@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import Dock from "@/components/Dock";
+import Dock from "@/components/layout/Dock";
 
 import Profile from "@/components/Profile";
 import Timer from "@/components/Timer";
-import Leaderboard from "@/components/Leaderboard";
+import { Leaderboard } from "@/components/leaderboard/Leaderboard";
 import Market from "@/components/Market";
 
 function Dashboard() {

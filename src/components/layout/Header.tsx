@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { useContext } from "react";
 
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Sync } from "@/components/Sync";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
+import { SyncDataButton } from "@/components/common/SyncDataButton";
 
 import { UserContext } from "@/context/UserContext";
 
@@ -32,7 +32,7 @@ function Header({ className }: HeaderProps) {
 
         {/* CONTROLS */}
         <div className="flex items-center space-x-4">
-          {isLogged && <Sync />}
+          {isLogged && <SyncDataButton />}
           <ThemeToggle />
         </div>
       </div>

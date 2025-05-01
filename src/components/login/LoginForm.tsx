@@ -17,7 +17,7 @@ import type { Player } from "@/types/user";
 // Easter egg username :p
 const ENCODED_USERNAME = "SSBhbSB5b3VyIGZsb3VuZGVyIQ==";
 
-function LoginForm() {
+export function LoginForm() {
   const { setUser } = useContext(UserContext) || {}; // stores the user to use later
 
   const [isGuest, setIsGuest] = useState<boolean>(false);
@@ -99,5 +99,3 @@ function LoginForm() {
     </Fieldset>
   );
 }
-
-export default LoginForm;

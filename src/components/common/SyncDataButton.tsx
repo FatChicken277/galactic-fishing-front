@@ -7,7 +7,7 @@ import { useGetMarket } from "@/hooks/useGetMarket";
 import { useGetLeaderboard } from "@/hooks/useGetLeaderboard";
 import { useGetOnlineStatus } from "@/hooks/useGetOnlineStatus";
 
-export function Sync() {
+export function SyncDataButton() {
   const { refetch: refetchLB, isFetching: isFetchinLB } = useGetLeaderboard();
   const { refetch: refetchM, isFetching: isFetchingM } = useGetMarket();
 

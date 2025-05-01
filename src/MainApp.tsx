@@ -3,8 +3,8 @@ import { UserContext } from "@/context/UserContext";
 
 import Header from "@/components/layout/Header";
 
-import LoginView from "@/components/LoginView";
-import Dashboard from "@/components/Dashboard";
+import { LoginView } from "@/components/login/LoginView";
+import Dashboard from "@/components/layout/Dashboard";
 
 import ScannerLines from "@/components/ScannerLines";
 

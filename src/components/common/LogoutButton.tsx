@@ -4,7 +4,7 @@ import { Button } from "@headlessui/react";
 
 import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
 
-function LogOut() {
+export function LogoutButton() {
   const { logout } = useContext(UserContext) || {};
 
   return (
@@ -13,4 +13,3 @@ function LogOut() {
     </Button>
   );
 }
-export default LogOut;
