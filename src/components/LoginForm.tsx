@@ -1,28 +1,52 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useMemo } from "react";
+import {
+  Switch,
+  Button,
+  Fieldset,
+  Field,
+  Input,
+  Label,
+} from "@headlessui/react";
+
 import { UserContext } from "@/context/UserContext";
-import { Switch } from "@headlessui/react";
-import { Button } from "@headlessui/react";
-import { Fieldset, Field, Input, Label } from "@headlessui/react";
+import { useGetLeaderboard } from "@/hooks/useGetLeaderboard";
+import { useUsernameAnimation } from "@/hooks/useUsernameAnimation";
 
 import type { Player } from "@/types/user";
 
-import { useGetLeaderboard } from "@/hooks/useGetLeaderboard";
-function LoginForm() {
-  const { setUser } = useContext(UserContext) || {};
+// Easter egg username :p
+const ENCODED_USERNAME = "SSBhbSB5b3VyIGZsb3VuZGVyIQ==";
 
-  const [username, setUsername] = useState("");
-  const [enabled, setEnabled] = useState(false);
-  const [isGuest, setIsGuest] = useState(false);
-  const [animationInterval, setAnimationInterval] = useState<
-    NodeJS.Timeout | undefined
-  >(undefined);
+function LoginForm() {
+  const { setUser } = useContext(UserContext) || {}; // stores the user to use later
+
+  const [isGuest, setIsGuest] = useState<boolean>(false);
 
   const { players, isLoading, error } = useGetLeaderboard();
+  const { username, setUsername, animate } =
+    useUsernameAnimation(ENCODED_USERNAME);
+
+  // Avoid recomputation
+  const player = useMemo(
+    () => players.find((p: Player) => p.username === username),
+    [players, username]
+  );
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername((e.target as HTMLInputElement).value);
+  };
+
+  const handleSwitchChange = (checked: boolean) => {
+    setIsGuest(checked);
+    if (checked) {
+      animate();
+    } else {
+      setUsername("");
+    }
+  };
 
   const handleLogin = () => {
     if (!setUser) return;
-
-    const player = players.find((p: Player) => p.username === username);
 
     if (!isLoading && !error) {
       setUser({
@@ -34,55 +58,10 @@ function LoginForm() {
     }
   };
 
-  const randomChar = () => {
-    const chars =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    return chars[Math.floor(Math.random() * chars.length)];
-  };
-
-  const animateUsername = () => {
-    let frame = 0;
-    const totalFrames = 15;
-    const finalUsername = "SW0geW91ciBmYXRoZXIgOnY=";
-    const interval = setInterval(() => {
-      const progress = frame / totalFrames;
-      const length = Math.floor(finalUsername.length * progress);
-      const randomPart = Array(finalUsername.length - length)
-        .fill(0)
-        .map(() => randomChar())
-        .join("");
-      setUsername(finalUsername.slice(0, length) + randomPart);
-
-      frame++;
-      if (frame > totalFrames) {
-        clearInterval(interval);
-        setUsername(finalUsername);
-      }
-    }, 50);
-    setAnimationInterval(interval);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername((e.target as HTMLInputElement).value);
-  };
-
-  const handleSwitchChange = (input: boolean) => {
-    setEnabled(input);
-    if (input) {
-      animateUsername();
-      setIsGuest(true);
-    } else {
-      setUsername("");
-      clearInterval(animationInterval);
-      setIsGuest(false);
-    }
-  };
-
   return (
     <Fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-6 space-y-2 bg-gradient-to-br to-primary/[20.37%]">
       <div className="flex flex-col items-center space-y-2">
         <img src="/logo.webp" alt="Logo" width={200} />
-        <h1 className="text-lg font-semibold"></h1>
       </div>
 
       <Field className="space-y-3">
@@ -94,7 +73,7 @@ function LoginForm() {
           className="input input-primary"
           placeholder="Username"
           onChange={handleChange}
-          disabled={enabled}
+          disabled={isGuest}
           value={username}
         />
       </Field>
@@ -104,7 +83,7 @@ function LoginForm() {
           as="input"
           type="checkbox"
           className="toggle toggle-primary toggle-md md:toggle-sm"
-          checked={enabled}
+          checked={isGuest}
           onChange={handleSwitchChange}
         />
         <Label className="label text-sm font-semibold">Enter as a Guest</Label>
@@ -113,9 +92,9 @@ function LoginForm() {
       <Button
         className="mt-2 btn btn-primary"
         onClick={handleLogin}
-        disabled={!username}
+        disabled={!username || isLoading}
       >
-        Login
+        {isLoading ? "Loading..." : "Login"}
       </Button>
     </Fieldset>
   );

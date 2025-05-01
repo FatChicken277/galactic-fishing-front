@@ -1,6 +1,6 @@
 import LoginForm from "@/components/LoginForm";
 
-function Login() {
+function LoginView() {
   return (
     <div className="w-full h-full flex justify-center items-center">
       <LoginForm />
@@ -8,4 +8,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginView;

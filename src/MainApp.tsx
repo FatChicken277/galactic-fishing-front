@@ -2,15 +2,20 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "@/context/UserContext";
 
 import Header from "@/components/layout/Header";
-import Login from "@/components/Login";
+
+import LoginView from "@/components/LoginView";
 import Dashboard from "@/components/Dashboard";
+
+import ScannerLines from "@/components/ScannerLines";
+
 import { NotificationCenter } from "@/components/common/NotificationCenter";
 
 export function MainApp() {
-  const { isLogged } = useContext(UserContext) || { isLogged: false };
+  const { isLogged = false } = useContext(UserContext) ?? {};
 
+  // Set header height CSS variable on mount & resize
   useEffect(() => {
-    const setHeaderHeight = () => {
+    const updateHeaderHeight = () => {
       const header = document.querySelector("header");
       if (header) {
         document.documentElement.style.setProperty(
@@ -20,27 +25,26 @@ export function MainApp() {
       }
     };
 
-    setHeaderHeight();
-    window.addEventListener("resize", setHeaderHeight);
-    return () => window.removeEventListener("resize", setHeaderHeight);
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
+    return () => window.removeEventListener("resize", updateHeaderHeight);
   }, []);
+
+  const mainClassNames = isLogged
+    ? "pt-[var(--header-height)]" // dashboard
+    : "relative overflow-y-hidden"; // login
 
   return (
     <body className="vhs">
       <NotificationCenter />
-      <Header className={`${isLogged ? "" : "bg-transparent"}`} />
-      <main
-        className={`h-dvh ${
-          isLogged ? "pt-[var(--header-height)]" : "relative overflow-y-hidden"
-        }`}
-      >
+      <Header />
+      <main className={`h-dvh ${mainClassNames}`}>
         {isLogged ? (
           <Dashboard />
         ) : (
           <>
-            <div className="scanner -z-100"></div>
-            <div className="scanner -z-100"></div>
-            <Login />
+            <ScannerLines />
+            <LoginView />
           </>
         )}
       </main>
