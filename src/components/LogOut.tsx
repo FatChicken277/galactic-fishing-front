@@ -9,7 +9,7 @@ function LogOut() {
 
   return (
     <Button className="btn btn-square" onClick={logout}>
-      <ArrowLeftStartOnRectangleIcon class="size-5" />
+      <ArrowLeftStartOnRectangleIcon className="size-5" />
     </Button>
   );
 }

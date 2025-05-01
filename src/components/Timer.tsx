@@ -57,10 +57,10 @@ function Timer() {
         ⏱️ Timer
       </CardTitle>
       <CardContent className="flex flex-col items-center justify-center gap-4 pt-0 p-6 h-full overflow-auto">
-        <h1 class="text-8xl">{currentTime}s</h1>
+        <h1 className="text-8xl">{currentTime}s</h1>
 
         <progress
-          class="progress progress-primary"
+          className="progress progress-primary"
           value={currentTime}
           max={baseTime}
         ></progress>

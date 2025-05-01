@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useOnlineStatus = () => {
+export const useGetOnlineStatus = () => {
   const [isOnline, setIsOnline] = useState(true);
 
   const check = async () => {
