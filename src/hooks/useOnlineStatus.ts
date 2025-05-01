@@ -1,19 +1,38 @@
 import { useState, useEffect } from "react";
 
 export const useOnlineStatus = () => {
-  const [isOnline, setIsOnline] = useState(
-    () => typeof navigator !== "undefined" && navigator.onLine
-  );
+  const [isOnline, setIsOnline] = useState(true);
+
+  const check = async () => {
+    if (!navigator.onLine) return setIsOnline(false);
+
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 5000);
+
+      await fetch("/ping.json", {
+        cache: "no-store",
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeout);
+      setIsOnline(true);
+    } catch {
+      setIsOnline(false);
+    }
+  };
 
   useEffect(() => {
-    const update = () => setIsOnline(navigator.onLine);
+    check();
+    const interval = setInterval(check, 10000);
 
-    window.addEventListener("online", update);
-    window.addEventListener("offline", update);
+    window.addEventListener("online", check);
+    window.addEventListener("offline", check);
 
     return () => {
-      window.removeEventListener("online", update);
-      window.removeEventListener("offline", update);
+      clearInterval(interval);
+      window.removeEventListener("online", check);
+      window.removeEventListener("offline", check);
     };
   }, []);
 

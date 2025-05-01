@@ -23,6 +23,7 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
+      includeAssets: ["icons/*", "logo.webp"],
       manifest: {
         name: "Galactic Fishing",
         short_name: "Galactic Fishing",
@@ -56,7 +57,6 @@ export default defineConfig({
           },
         ],
       },
-      includeAssets: ["icons/*", "logo.webp"],
       workbox: {
         runtimeCaching: [
           {

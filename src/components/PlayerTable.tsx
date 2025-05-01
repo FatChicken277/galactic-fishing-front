@@ -1,10 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Tooltip } from "@/components/common/Tooltip";
 
 import type { Player } from "@/types/user";
 
 import { UserContext } from "@/context/UserContext";
-import { useNotification } from "@/context/NotificationContext";
 
 interface PlayerTableProps {
   players: Player[];
@@ -13,7 +12,6 @@ interface PlayerTableProps {
 
 function PlayerTable({ players, page }: PlayerTableProps) {
   const { player: currentUser } = useContext(UserContext) || {};
-  const { addNotification } = useNotification();
 
   const itemsPerPage = 30;
   const cols = ["Rank", "Rebel", "Level", "Xp", "Gold"];
@@ -23,10 +21,6 @@ function PlayerTable({ players, page }: PlayerTableProps) {
     2: "bg-base-300/60",
     3: "bg-base-300/40",
   };
-
-  useEffect(() => {
-    addNotification("This worksxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx!", "info");
-  }, []);
 
   const top3Emojis = ["🥇", "🥈", "🥉"];
 

@@ -25,6 +25,7 @@ function Market() {
     poison_leveling: "badge-error",
     poison_recovery: "badge-success",
     fishing_rod: "badge-secondary",
+    poison_reveal_fishes: "badge-info",
   };
 
   const borderColors: { [key: string]: string } = {
@@ -32,6 +33,7 @@ function Market() {
     poison_leveling: "border-error",
     poison_recovery: "border-success",
     fishing_rod: "border-secondary",
+    poison_reveal_fishes: "border-info",
   };
 
   return (
