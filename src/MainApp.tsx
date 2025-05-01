@@ -6,8 +6,6 @@ import { Header } from "@/components/layout/Header";
 import { LoginView } from "@/components/login/LoginView";
 import { Dashboard } from "@/components/layout/Dashboard";
 
-import { ScannerLines } from "@/components/ScannerLines";
-
 import { NotificationCenter } from "@/components/common/NotificationCenter";
 
 export function MainApp() {
@@ -43,7 +41,8 @@ export function MainApp() {
           <Dashboard />
         ) : (
           <>
-            <ScannerLines />
+            <div className="scanner -z-100" />
+            <div className="scanner -z-100" />
             <LoginView />
           </>
         )}
