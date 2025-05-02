@@ -15,8 +15,8 @@ export function Market() {
   const itemsPerPage = 6;
 
   return (
-    <Card className="card-border border-primary h-full overflow-y-auto">
-      <CardContent className="p-0">
+    <Card className="card-border border-primary h-full">
+      <CardContent className="p-0 overflow-hidden">
         <CardTitle className="flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-t-2xl flex-wrap space-y-2">
           <h1 className="text-xl m-0">🛒 Market</h1>
           <Pagination
@@ -38,7 +38,7 @@ export function Market() {
         ) : error ? (
           <p>Error: {error.message}</p>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-4 py-2 pb-6 [grid-auto-rows:1fr]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-4 py-2 pb-6 [grid-auto-rows:1fr] overflow-y-auto">
             {market
               .slice((page - 1) * itemsPerPage, page * itemsPerPage)
               .map((item: MarketItemType) => (
