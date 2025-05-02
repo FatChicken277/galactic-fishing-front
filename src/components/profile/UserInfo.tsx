@@ -1,12 +1,17 @@
 import { UserIcon } from "@heroicons/react/24/outline";
 
+import type { PlayerType } from "@/types/user";
+
 interface UserInfoProps {
   username: string;
   isGuest: boolean;
+  player: PlayerType | null;
 }
 
-export function UserInfo({ username, isGuest }: UserInfoProps) {
-  const userType = isGuest ? "Guest" : "Agent Rebel";
+export function UserInfo({ username, isGuest, player }: UserInfoProps) {
+  const userType = isGuest ? "Guest" : "Agent";
+
+  console.log(isGuest, player);
 
   return (
     <div className="flex items-center space-x-2 overflow-hidden">
@@ -21,7 +26,11 @@ export function UserInfo({ username, isGuest }: UserInfoProps) {
       <div className="flex flex-col min-w-0">
         <p className="text-sm font-bold truncate">{username}</p>
         <p className="text-xs font-light truncate">
-          {!isGuest ? "Unrecognized " : ""}
+          {!isGuest && !player
+            ? "Unrecognized "
+            : !isGuest && player
+            ? "Rebel "
+            : ""}
           {userType}
         </p>
       </div>

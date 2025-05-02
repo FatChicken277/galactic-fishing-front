@@ -14,7 +14,11 @@ export function Profile() {
     <Card className="card-border border-primary">
       <CardContent className="h-full">
         <CardTitle className="flex items-center justify-between">
-          <UserInfo username={username || ""} isGuest={isGuest || false} />
+          <UserInfo
+            username={username || ""}
+            isGuest={isGuest || false}
+            player={player || null}
+          />
           <LogoutButton />
         </CardTitle>
 
