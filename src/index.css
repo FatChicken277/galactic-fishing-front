@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
 @source inline("status-success status-error");
 @source inline("text-primary text-secondary text-accent text-neutral text-info text-success text-warning text-error");

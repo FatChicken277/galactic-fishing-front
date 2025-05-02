@@ -13,7 +13,7 @@ const THEMES: Theme = {
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme["light"] | Theme["dark"]>(
-    THEMES.light
+    THEMES.dark
   );
 
   const toggleTheme = () => {

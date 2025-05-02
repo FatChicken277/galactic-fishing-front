@@ -11,8 +11,6 @@ interface UserInfoProps {
 export function UserInfo({ username, isGuest, player }: UserInfoProps) {
   const userType = isGuest ? "Guest" : "Agent";
 
-  console.log(isGuest, player);
-
   return (
     <div className="flex items-center space-x-2 overflow-hidden">
       {/* Icon */}
