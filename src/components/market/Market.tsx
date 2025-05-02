@@ -30,9 +30,9 @@ export function Market() {
         {isLoading ? (
           <div className="p-5 h-full w-full">
             <div className="flex w-full h-full flex-col gap-4 pb-5">
-              <div className="skeleton h-32 w-full"></div>
-              <div className="skeleton h-4 w-full"></div>
-              <div className="skeleton h-4 w-full"></div>
+              <div className="skeleton h-[80%] w-full"></div>
+              <div className="skeleton h-[10%] w-full"></div>
+              <div className="skeleton h-[10%] w-full"></div>
             </div>
           </div>
         ) : error ? (

@@ -7,13 +7,13 @@ import {
 
 import { StatItem } from "@/components/common/StatItem";
 
-import type { Player } from "@/types/user";
-
-const top3Emojis = ["🥇", "🥈", "🥉"];
+import type { PlayerType } from "@/types/user";
 
 interface StatsSectionProps {
-  player: Player;
+  player: PlayerType;
 }
+
+const top3Emojis = ["🥇", "🥈", "🥉"];
 
 export function StatsSection({ player }: StatsSectionProps) {
   const Sections = {
