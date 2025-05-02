@@ -12,7 +12,7 @@ export function Market() {
   const { market, isLoading, error } = useGetMarket();
   const [page, setPage] = useState<number>(1);
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 6;
 
   return (
     <Card className="card-border border-primary h-full overflow-y-auto">
