@@ -1,5 +1,5 @@
 interface StatusProps {
-  color: string;
+  color: "success" | "error";
 }
 
 export function Status({ color }: StatusProps) {

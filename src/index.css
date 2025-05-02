@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
+@source inline("status-success status-error");
+
 @font-face {
   font-family: "Exo 2", sans-serif;
   font-optical-sizing: auto;
