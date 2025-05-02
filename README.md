@@ -1,6 +1,6 @@
-![Logo](doc/logo.png)
+<img src="doc/logo.png" alt="Logo" style="width: 100%;" />
 
-# Galactic Fishing | Nexus
+# 🛸 Galactic Fishing | Nexus
 
 Galactic Fishing | Nexus is the central hub for the Rebel forces. From here, you can:
 
@@ -8,13 +8,13 @@ Galactic Fishing | Nexus is the central hub for the Rebel forces. From here, you
 - Monitor metrics
 - Essential tools to support your rebellion and interstellar fishing adventure
 
-## Features
+## ✨ Features
 
 - Light/dark mode toggle
 - Live previews
 - PWA support
 
-## Run Locally
+## 💻 Run Locally
 
 Clone the project
 
@@ -40,7 +40,7 @@ Start the server
   npm run dev
 ```
 
-## Build
+## 🛠️ Build
 
 To deploy this project run
 
@@ -85,10 +85,10 @@ This project uses a carefully selected stack for performance, simplicity, and ef
 
 > 📦 **Total gzip size**: **~55 KB** (optimized) vs. **~600–800 KB** (unoptimized)
 
-## Screenshots
+## 📸 Screenshots
 
 ![App Screenshot](doc/screenshot.png)
 
-## Authors
+## ✍️ Authors
 
 - [@FatChicken277](https://www.github.com/FatChicken277)
