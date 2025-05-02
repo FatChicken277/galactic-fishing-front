@@ -16,7 +16,7 @@ export function Header({ className }: HeaderProps) {
   return (
     <header
       className={clsx(
-        "absolute z-10 w-full bg-base-100 flex justify-center",
+        "absolute z-10 w-full bg-base-100 flex justify-center border-0",
         className
       )}
     >
