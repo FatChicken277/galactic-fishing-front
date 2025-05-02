@@ -1,55 +1,18 @@
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardTitle } from "@/components/common/Card";
 import { Button } from "@headlessui/react";
+import { Card, CardContent, CardTitle } from "@/components/common/Card";
+
+import { useTimer } from "@/hooks/useTimer";
 
 export function Timer() {
-  const [currentTime, setCurrentTime] = useState(30);
-  const [baseTime, setBaseTime] = useState(30);
-  const [timeInterval, setTimeInterval] = useState<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    if (currentTime <= 0 && timeInterval) {
-      clearInterval(timeInterval);
-      setTimeInterval(null);
-    }
-  }, [currentTime, timeInterval]);
-
-  const handleStart = () => {
-    if (timeInterval) return;
-
-    if (currentTime === 0) {
-      setCurrentTime(baseTime);
-    }
-
-    const interval = setInterval(() => {
-      setCurrentTime((prevTime) => prevTime - 1);
-    }, 1000);
-
-    setTimeInterval(interval);
-  };
-
-  const handleReset = () => {
-    if (timeInterval) clearInterval(timeInterval);
-    setTimeInterval(null);
-    setCurrentTime(30);
-    setBaseTime(30);
-  };
-
-  const handleAdd30 = () => {
-    if (timeInterval) clearInterval(timeInterval);
-    const newTime = baseTime + 30;
-    setBaseTime(newTime);
-    setCurrentTime(newTime);
-    setTimeInterval(null);
-  };
-
-  const handleSubtract30 = () => {
-    if (timeInterval) clearInterval(timeInterval);
-    const newTime = baseTime - 30;
-    setBaseTime(newTime);
-    setCurrentTime(newTime);
-    setTimeInterval(null);
-  };
+  const {
+    currentTime,
+    baseTime,
+    timeInterval,
+    handleStart,
+    handleReset,
+    handleAdd30,
+    handleSubtract30,
+  } = useTimer(30);
 
   return (
     <Card className="border border-primary shadow-xl bg-base-100">
@@ -89,6 +52,7 @@ export function Timer() {
           <Button
             className="btn btn-info order-4 xl:order-4"
             onClick={handleAdd30}
+            disabled={currentTime >= 300}
           >
             +30s
           </Button>
