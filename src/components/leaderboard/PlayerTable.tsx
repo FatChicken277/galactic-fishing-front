@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Tooltip } from "@/components/common/Tooltip";
 
-import type { Player } from "@/types/user";
+import type { PlayerType } from "@/types/user";
 
 import { UserContext } from "@/context/UserContext";
 
 interface PlayerTableProps {
-  players: Player[];
+  players: PlayerType[];
   page: number;
 }
 
@@ -39,7 +39,7 @@ export function PlayerTable({ players, page }: PlayerTableProps) {
           <tbody className="overflow-y-scroll">
             {players
               .slice((page - 1) * itemsPerPage, page * itemsPerPage)
-              .map((player: Player) => (
+              .map((player: PlayerType) => (
                 <tr
                   key={player.rank}
                   className={`${top3Colors[player.rank]} ${

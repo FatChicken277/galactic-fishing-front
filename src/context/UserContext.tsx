@@ -1,7 +1,11 @@
 import { createContext, useState, useEffect } from "react";
 
 // Type imports
-import type { Player, UserContextType, UserProviderProps } from "@/types/user";
+import type {
+  PlayerType,
+  UserContextType,
+  UserProviderProps,
+} from "@/types/user";
 
 // Context creation
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -12,7 +16,7 @@ function UserProvider({ children }: UserProviderProps) {
     isLogged: boolean;
     isGuest: boolean;
     username: string | null;
-    player: Player | null;
+    player: PlayerType | null;
   }>({
     username: null,
     player: null,
@@ -42,7 +46,7 @@ function UserProvider({ children }: UserProviderProps) {
     isLogged: boolean;
     isGuest: boolean;
     username: string | null;
-    player: Player | null;
+    player: PlayerType | null;
   }) => {
     setUserState(newUser);
     // Store the data in localStorage for persistence

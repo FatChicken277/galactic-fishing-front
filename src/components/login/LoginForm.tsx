@@ -12,7 +12,7 @@ import { UserContext } from "@/context/UserContext";
 import { useGetLeaderboard } from "@/hooks/useGetLeaderboard";
 import { useUsernameAnimation } from "@/hooks/useUsernameAnimation";
 
-import type { Player } from "@/types/user";
+import type { PlayerType } from "@/types/user";
 
 // Easter egg username :p
 const ENCODED_USERNAME = "SSBhbSB5b3VyIGZsb3VuZGVyIQ==";
@@ -28,7 +28,7 @@ export function LoginForm() {
 
   // Avoid recomputation
   const player = useMemo(
-    () => players.find((p: Player) => p.username === username),
+    () => players.find((p: PlayerType) => p.username === username),
     [players, username]
   );
 

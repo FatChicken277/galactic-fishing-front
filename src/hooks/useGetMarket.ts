@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from "react";
 
 import { useNotification } from "@/context/NotificationContext";
 
-import type { MarketItem } from "@/types/market";
+import type { MarketItemType } from "@/types/market";
 import { getMarket } from "@/api/market";
 
 // Load Market from localStorage
@@ -50,7 +50,7 @@ const TWELVE_HOURS = 12 * 60 * 60 * 1000; // 43,200,000 ms
 
 export const useGetMarket = () => {
   const { addNotification } = useNotification();
-  const [marketItems, setMarketItems] = useState<MarketItem[]>([]);
+  const [marketItems, setMarketItems] = useState<MarketItemType[]>([]);
 
   const marketDataRef = useRef(loadMarketData());
 
@@ -65,7 +65,7 @@ export const useGetMarket = () => {
         if (response) {
           const cached = await response.json();
           const cachedCosts = cached.items.reduce(
-            (acc: any, item: MarketItem) => {
+            (acc: any, item: MarketItemType) => {
               acc[item.id] = item.cost;
               return acc;
             },
@@ -98,7 +98,7 @@ export const useGetMarket = () => {
           );
 
           // Set marketItems with enriched items
-          const enrichedItems = cached.items.map((item: MarketItem) => {
+          const enrichedItems = cached.items.map((item: MarketItemType) => {
             const refCost = reference[item.id] ?? item.cost;
             const priceChange = item.cost - refCost;
             return { ...item, priceChange };
@@ -135,10 +135,13 @@ export const useGetMarket = () => {
       }
 
       // Map new costs by id
-      const newCosts = newData.items.reduce((acc: any, item: MarketItem) => {
-        acc[item.id] = item.cost;
-        return acc;
-      }, {});
+      const newCosts = newData.items.reduce(
+        (acc: any, item: MarketItemType) => {
+          acc[item.id] = item.cost;
+          return acc;
+        },
+        {}
+      );
 
       // Check for changes
       const hasChanges =
@@ -147,7 +150,7 @@ export const useGetMarket = () => {
         Object.entries(newCosts).some(([id, cost]) => current[id] !== cost);
 
       // Add cost difference to items
-      const enrichedItems = newData.items.map((item: MarketItem) => {
+      const enrichedItems = newData.items.map((item: MarketItemType) => {
         const refCost = reference[item.id] ?? item.cost;
         const priceChange = item.cost - refCost;
         return { ...item, priceChange };

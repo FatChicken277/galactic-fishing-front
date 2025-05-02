@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 // Player Type (In Game)
-export interface Player {
+export interface PlayerType {
   username: string;
   level: number;
   xp: number;
@@ -13,17 +13,17 @@ export interface Player {
 }
 
 // User Type (In Website)
-export interface User {
+export interface UserType {
   isLogged: boolean;
   isGuest: boolean;
   username: string;
-  player: Player;
+  player: PlayerType;
 }
 
 // User Context Type
 export interface UserContextType {
   username: string | null;
-  player: Player | null;
+  player: PlayerType | null;
   isLogged: boolean;
   isGuest: boolean;
 
@@ -31,7 +31,7 @@ export interface UserContextType {
     isLogged: boolean;
     isGuest: boolean;
     username: string | null;
-    player: Player | null;
+    player: PlayerType | null;
   }) => void;
 
   logout: () => void;

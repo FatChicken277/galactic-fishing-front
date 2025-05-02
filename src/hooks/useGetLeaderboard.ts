@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getLeaderboard } from "@/api/leaderboard";
 
-import type { Player } from "@/types/user";
+import type { PlayerType } from "@/types/user";
 
 export const useGetLeaderboard = () => {
   const { data, isLoading, error, refetch, isFetching } = useQuery({
@@ -13,7 +13,7 @@ export const useGetLeaderboard = () => {
   });
 
   return {
-    players: (data?.players as Player[]) ?? [],
+    players: (data?.players as PlayerType[]) ?? [],
     tiers: data?.legend?.tiers ?? [],
     isLoading,
     error,
