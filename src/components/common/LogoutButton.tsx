@@ -8,7 +8,7 @@ export function LogoutButton() {
   const { logout } = useContext(UserContext) || {};
 
   return (
-    <Button className="btn btn-square" onClick={logout}>
+    <Button className="btn btn-square" onClick={logout} title="Logout">
       <ArrowLeftStartOnRectangleIcon className="size-5" />
     </Button>
   );

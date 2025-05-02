@@ -23,10 +23,10 @@ export function Header({ className }: HeaderProps) {
       <div className="container flex items-center justify-between p-8">
         {/* LOGO TITLE */}
         <h1 className="text-xl font-bold space-x-1 md:space-x-2">
-          <span className="text-[#0ba8e2] hidden sm:inline">GALACTIC</span>
-          <span className="text-[#e40772] hidden sm:inline">FISHING</span>
-          <span className="text-[#0ba8e2] sm:hidden">G</span>
-          <span className="text-[#e40772] sm:hidden">F</span>
+          <span className="text-base-title-b hidden sm:inline">GALACTIC</span>
+          <span className="text-base-title-s hidden sm:inline">FISHING</span>
+          <span className="text-base-title-b sm:hidden">G</span>
+          <span className="text-base-title-s sm:hidden">F</span>
           <span>| NEXUS</span>
         </h1>
 

@@ -33,12 +33,14 @@ export function Timer() {
             className="btn btn-success order-1 xl:order-2"
             onClick={handleStart}
             disabled={!!timeInterval}
+            title="Start Timer"
           >
             Start
           </Button>
           <Button
             className="btn btn-warning order-2 xl:order-3"
             onClick={handleReset}
+            title="Reset Timer"
           >
             Reset
           </Button>
@@ -46,6 +48,7 @@ export function Timer() {
             className="btn btn-info order-3 xl:order-1"
             onClick={handleSubtract30}
             disabled={currentTime < 60}
+            title="Subtract 30 seconds"
           >
             -30s
           </Button>
@@ -53,6 +56,7 @@ export function Timer() {
             className="btn btn-info order-4 xl:order-4"
             onClick={handleAdd30}
             disabled={currentTime >= 300}
+            title="Add 30 seconds"
           >
             +30s
           </Button>

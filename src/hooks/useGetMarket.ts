@@ -107,7 +107,7 @@ export const useGetMarket = () => {
           setMarketItems(enrichedItems);
         }
       } catch (err) {
-        addNotification("Failed to load content", "warning");
+        console.warn("Failed to load content", err);
       }
     }
 
@@ -171,6 +171,8 @@ export const useGetMarket = () => {
           timestamp,
           expirationTimestamp
         );
+
+        addNotification("The prices have changed", "info");
       }
 
       return { items: enrichedItems, timestamp };

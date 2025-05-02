@@ -13,7 +13,7 @@ const THEMES: Theme = {
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme["light"] | Theme["dark"]>(
-    THEMES.dark
+    THEMES.light
   );
 
   const toggleTheme = () => {
@@ -30,7 +30,6 @@ export function ThemeToggle() {
         type="checkbox"
         onChange={toggleTheme}
         checked={theme === THEMES.dark}
-        aria-hidden="true"
       />
       <SunIcon className="size-5 swap-on" />
       <MoonIcon className="size-5 swap-off" />

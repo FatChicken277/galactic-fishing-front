@@ -12,6 +12,8 @@ import { UserContext } from "@/context/UserContext";
 import { useGetLeaderboard } from "@/hooks/useGetLeaderboard";
 import { useUsernameAnimation } from "@/hooks/useUsernameAnimation";
 
+import { resetZoom } from "@/utils/common";
+
 import type { PlayerType } from "@/types/user";
 
 // Easter egg username :p
@@ -56,6 +58,8 @@ export function LoginForm() {
         player: player || null,
       });
     }
+
+    resetZoom();
   };
 
   return (
@@ -93,6 +97,7 @@ export function LoginForm() {
         className="mt-2 btn btn-primary"
         onClick={handleLogin}
         disabled={!username || isLoading}
+        title="Login"
       >
         {isLoading ? "Loading..." : "Login"}
       </Button>

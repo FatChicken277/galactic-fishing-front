@@ -50,7 +50,7 @@ const NotificationItem = ({
       )}
     >
       <span className="text-sm">{message}</span>
-      <button onClick={() => onClose(id)} className="btn btn-sm">
+      <button onClick={() => onClose(id)} className="btn btn-sm" title="Close">
         <XMarkIcon className="size-5" />
       </button>
     </div>

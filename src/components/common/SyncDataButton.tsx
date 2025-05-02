@@ -20,7 +20,11 @@ export function SyncDataButton() {
       {/* STATUS Indicator */}
       <div className="flex items-center space-x-2">
         <Status color={isOnline ? "success" : "error"} />
-        <p className={`${isOnline ? "text-success" : "text-error"} text-sm`}>
+        <p
+          className={`light:badge ${
+            isOnline ? "badge-success" : "badge-error"
+          } text-sm`}
+        >
           {isOnline ? "Online" : "Offline"}
         </p>
       </div>
@@ -33,6 +37,7 @@ export function SyncDataButton() {
         }}
         className="btn btn-square"
         disabled={isFetching || !isOnline}
+        title="Sync Data"
       >
         <ArrowPathIcon
           className={`size-5 ${isFetching ? "animate-spin" : ""}`}
