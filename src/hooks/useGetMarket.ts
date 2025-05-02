@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useEffect, useState } from "react";
 
-import { useNotification } from "@/context/NotificationContext";
-
 import type { MarketItemType } from "@/types/market";
 import { getMarket } from "@/api/market";
 
@@ -49,7 +47,6 @@ const saveMarketData = (
 const TWELVE_HOURS = 12 * 60 * 60 * 1000; // 43,200,000 ms
 
 export const useGetMarket = () => {
-  const { addNotification } = useNotification();
   const [marketItems, setMarketItems] = useState<MarketItemType[]>([]);
 
   const marketDataRef = useRef(loadMarketData());
@@ -112,7 +109,7 @@ export const useGetMarket = () => {
     }
 
     loadInitialCache();
-  }, [addNotification]);
+  }, []);
 
   const { data, isLoading, error, refetch, isFetching } = useQuery({
     queryKey: ["market"],
@@ -172,7 +169,7 @@ export const useGetMarket = () => {
           expirationTimestamp
         );
 
-        addNotification("The prices have changed", "info");
+        //addNotification("The prices have changed", "info"); has a bug :c
       }
 
       return { items: enrichedItems, timestamp };

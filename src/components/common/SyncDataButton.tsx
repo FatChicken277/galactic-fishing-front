@@ -15,16 +15,15 @@ export function SyncDataButton() {
 
   const isFetching = isFetchinLB || isFetchingM;
 
+  const badgeColor = isOnline ? "badge-success" : "badge-error";
+  const textColor = isOnline ? "text-success" : "text-error";
+
   return (
     <div className="flex items-center space-x-4">
       {/* STATUS Indicator */}
       <div className="flex items-center space-x-2">
         <Status color={isOnline ? "success" : "error"} />
-        <p
-          className={`light:badge ${
-            isOnline ? "badge-success" : "badge-error"
-          } text-sm`}
-        >
+        <p className={`text-sm light:badge ${badgeColor} ${textColor}`}>
           {isOnline ? "Online" : "Offline"}
         </p>
       </div>
